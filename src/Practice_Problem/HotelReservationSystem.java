@@ -2,7 +2,12 @@ package Practice_Problem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import org.junit.Test;
 
 public class HotelReservationSystem {
 
@@ -22,6 +27,10 @@ public class HotelReservationSystem {
 		return HotelList;
 	}
 
+	public Hotel dateRange(ArrayList<Hotel> hotel_List) {
+		Hotel dateRangeHotel = hotel_List.stream().collect(Collectors.maxBy(Comparator.comparingInt(Hotel::getWeekdayPrice))).get();
+		return dateRangeHotel;
+	}
 	public static void main(String[] args) {
 	}
 }
