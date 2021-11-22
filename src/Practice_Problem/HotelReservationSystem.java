@@ -14,7 +14,7 @@ public class HotelReservationSystem {
 
 	private HashMap<String, List<Integer>> lakeWood = new HashMap<>();
 	private HashMap<String, List<Integer>> bridgeWood = new HashMap<>();
-	private HashMap<String, List<Integer>> ridgeWood = new HashMap<>();
+	private HashMap<String, List<Integer>> ridgeWood = new HashMap<>();	
 	private static int lakeWoodRating;
 	private static int bridgeWoodRating;
 	private static int rigdeWoodRating;
