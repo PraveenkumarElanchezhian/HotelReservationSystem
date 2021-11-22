@@ -61,7 +61,7 @@ public class HotelReservationSystem {
 		ridgeWood.put("Regular", RegularCustomer);
 	}
 
-	public String minCostHotel(String input) {
+	public String maxCostHotel(String input) {
 		String[] arr = input.split(",");
 		String customerType = "";
 		if (arr.length > 0) {
@@ -69,11 +69,11 @@ public class HotelReservationSystem {
 			customerType = tempArr[0];
 			arr[0] = tempArr[1];
 		}
-		String hotel = minCostHotel(customerType, arr);
+		String hotel = maxCostHotel(customerType, arr);
 		return hotel;
 	}
 
-	private String minCostHotel(String customerType, String[] arr) {
+	private String maxCostHotel(String customerType, String[] arr) {
 		int numOfWeekdays = 0;
 		int numOfWeekends = 0;
 		int lakeWoodCost = 0;
@@ -94,25 +94,25 @@ public class HotelReservationSystem {
 		lakeWoodCost = numOfWeekdays * valuesForLakewood.get(0) + numOfWeekends * valuesForLakewood.get(1);
 		bridgeWoodCost = numOfWeekdays * valuesForBridgeWood.get(0) + numOfWeekends * valuesForBridgeWood.get(1);
 		ridgeWoodCost = numOfWeekdays * valuesForRidgeWood.get(0) + numOfWeekends * valuesForRidgeWood.get(1);
-		String hotel = minCost(lakeWoodCost, bridgeWoodCost, ridgeWoodCost);
+		String hotel = maxCost(lakeWoodCost, bridgeWoodCost, ridgeWoodCost);
 		return hotel;
 	}
 
-	private String minCost(int lakeWoodCost, int bridgeWoodCost, int ridgeWoodCost) {
-		int minCost = Math.min(lakeWoodCost, Math.min(bridgeWoodCost, ridgeWoodCost));
-		if (minCost == lakeWoodCost && minCost == bridgeWoodCost) {
-			return bridgeWoodRating > lakeWoodRating ? "BridgeWood" : "LakeWood";
-		} else if (minCost == bridgeWoodCost && minCost == ridgeWoodCost) {
-			return bridgeWoodRating > ridgeWoodCost ? "BridgeWood" : "RidgeWood";
-		} else if (minCost == lakeWoodCost && minCost == ridgeWoodCost) {
-			return lakeWoodCost > ridgeWoodCost ? "LakeWood" : "RidgeWood";
+	private String maxCost(int lakeWoodCost, int bridgeWoodCost, int ridgeWoodCost) {
+		int maxCost = Math.max(ridgeWoodCost, Math.max(bridgeWoodCost, lakeWoodCost));
+		if (maxCost == ridgeWoodCost && maxCost == bridgeWoodCost) {
+			return bridgeWoodRating > ridgeWoodCost ? "BridgeWood" : "ridgeWood";
+		} else if (maxCost == bridgeWoodCost && maxCost == lakeWoodCost) {
+			return bridgeWoodRating > lakeWoodCost ? "BridgeWood" : "lakeWood";
+		} else if (maxCost == ridgeWoodCost && maxCost == lakeWoodCost) {
+			return ridgeWoodCost > lakeWoodCost ? "RidgeWood" :"LakeWood" ;
 		} else {
-			if (minCost == lakeWoodCost) {
-				return "LakeWood";
-			} else if (minCost == bridgeWoodCost) {
+			if (maxCost == ridgeWoodCost) {
+				return "RidgeWood";
+			} else if (maxCost == bridgeWoodCost) {
 				return "BridgeWood";
 			} else {
-				return "RidgeWood";
+				return "LakeWood";
 			}
 		}
 	}
