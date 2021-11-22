@@ -15,7 +15,6 @@ public class HotelReservationSystem {
 	private HashMap<String, List<Integer>> lakeWood = new HashMap<>();
 	private HashMap<String, List<Integer>> bridgeWood = new HashMap<>();
 	private HashMap<String, List<Integer>> ridgeWood = new HashMap<>();	
-// Rating of each Hotel	
 	private static int lakeWoodRating;
 	private static int bridgeWoodRating;
 	private static int rigdeWoodRating;
@@ -28,6 +27,7 @@ public class HotelReservationSystem {
 
 	private void setLakeWood() {
 		lakeWoodRating = 3;
+// special rates for reward customers =>		
 		List<Integer> RewardsCustomer = new ArrayList<>();
 		RewardsCustomer.add(80);
 		lakeWood.put("Rewards", RewardsCustomer);
@@ -39,6 +39,7 @@ public class HotelReservationSystem {
 
 	private void setBridgeWood() {
 		bridgeWoodRating = 4;
+// special rates for reward customers =>			
 		List<Integer> RewardsCustomer = new ArrayList<>();
 		RewardsCustomer.add(110);
 		RewardsCustomer.add(50);
@@ -51,6 +52,7 @@ public class HotelReservationSystem {
 
 	private void setRidgeWood() {
 		rigdeWoodRating = 5;
+// special rates for reward customers =>	
 		List<Integer> RewardsCustomer = new ArrayList<>();
 		RewardsCustomer.add(100);
 		RewardsCustomer.add(40);
